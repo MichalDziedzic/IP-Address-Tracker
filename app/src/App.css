@@ -25,14 +25,22 @@ header > .ResultTracker
   align-items: center;  
 
 }
+
 section
 {
-  height: 60vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  max-height: 60vh;
+  /* display: flex; */
+  /* justify-content: center;
+  align-items: center; */
+  max-width: 100%;
+  overflow-y: hidden;
+  /* background: blueviolet; */
   
+}
 
+.leaflet-container {
+  width: 100%;
+  height: 60vh;
 }
 footer{
   min-height: 10vh;
