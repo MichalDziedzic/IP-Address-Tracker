@@ -11,7 +11,8 @@ import ResultTracker from'./components/ResultTracker';
       const [isp,setIsp]=useState('');
     const [lat,setLat]=useState('');
     const [lng,setLng]=useState('');
-    const apiKey=`at_ZWirdu7GQBgYHHcfroKKUmHvLAbRN`;
+    const [ipAddress,setIpAdress]=useState('8.8.8.8');
+   
     
    /*
       ip adreess | location(Brooklyn,NY,postcode) |timezone(UTC-05:00) | ISP (spaceX starlink)
@@ -19,7 +20,8 @@ import ResultTracker from'./components/ResultTracker';
    */
 
   useEffect(()=>{
-    axios.get(`https://geo.ipify.org/api/v1?apiKey=${apiKey}&ipAddress=176.111.123.203`)
+     const apiKey=`at_ZWirdu7GQBgYHHcfroKKUmHvLAbRN`;
+    axios.get(`https://geo.ipify.org/api/v1?apiKey=${apiKey}&ipAddress=${ipAddress}`)
     .then((response)=>{
       setLat(response.data.location.lat);
       setLng(response.data.location.lng);
@@ -38,12 +40,11 @@ import ResultTracker from'./components/ResultTracker';
   <div>
    <header>
     <HeaderTitle/>
-    <InputTracker/>
+    <InputTracker ipAddress={ipAddress} setIpAdress={setIpAdress}/>
     <ResultTracker/>
   </header>
   <section> 
        <Map lat={lat} lng={lng} ></Map> 
- 
   </section> 
   <footer>
     Challenge by <a href={projectAdress} >Frontend Mentor</a>. 

@@ -19,6 +19,7 @@ import L from "leaflet";
           map.locate();
         },
         locationfound() {
+            
           map.flyTo(position, map.getZoom());
         },
       });
