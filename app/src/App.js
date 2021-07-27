@@ -11,18 +11,16 @@ import ResultTracker from'./components/ResultTracker';
       const [isp,setIsp]=useState('');
     const [lat,setLat]=useState('');
     const [lng,setLng]=useState('');
-    const [ipAddress,setIpAdress]=useState('8.8.8.8');
-   
+    const [SearchIpFlag,setSearchIpFlag]=useState(false);
+     const [ipAddress,setIpAdress]=useState('');
     
-   /*
-      ip adreess | location(Brooklyn,NY,postcode) |timezone(UTC-05:00) | ISP (spaceX starlink)
-
-   */
+   
 
   useEffect(()=>{
      const apiKey=`at_ZWirdu7GQBgYHHcfroKKUmHvLAbRN`;
-    axios.get(`https://geo.ipify.org/api/v1?apiKey=${apiKey}&ipAddress=${ipAddress}`)
+    axios.get(`https://geo.ipify.org/api/v1?apiKey=${apiKey}`)
     .then((response)=>{
+      setIpAdress(response.data.ip)
       setLat(response.data.location.lat);
       setLng(response.data.location.lng);
        setIpUserLocation(response.data.location);
@@ -32,6 +30,25 @@ import ResultTracker from'./components/ResultTracker';
 
   },[])
 
+  useEffect(()=>{
+    const apiKey=`at_ZWirdu7GQBgYHHcfroKKUmHvLAbRN`;
+   axios.get(`https://geo.ipify.org/api/v1?apiKey=${apiKey}&ipAddress=${ipAddress}`)
+   .then((response)=>{
+     setLat(response.data.location.lat);
+     setLng(response.data.location.lng);
+      setIpUserLocation(response.data.location);
+      setIsp(response.data.isp);
+   })
+   .catch(err => { console.log(err)})
+
+ },[SearchIpFlag]);
+
+
+ const ChangeSearchFlag=()=>
+ {
+  setSearchIpFlag(!SearchIpFlag);
+ }
+
   
   const projectAdress = `https://www.frontendmentor.io?ref=challenge`;
    const author= `Michał Dziedzic`;
@@ -40,8 +57,17 @@ import ResultTracker from'./components/ResultTracker';
   <div>
    <header>
     <HeaderTitle/>
-    <InputTracker ipAddress={ipAddress} setIpAdress={setIpAdress}/>
-    <ResultTracker/>
+    <InputTracker 
+    ipAddress={ipAddress} 
+    setIpAdress={setIpAdress}
+    SearchIpFlag={SearchIpFlag}
+    ChangeSearchFlag={ChangeSearchFlag}
+    />
+    <ResultTracker
+      ipAddress={ipAddress}
+      isp={isp}
+      ipUserLocation={ipUserLocation}
+    />
   </header>
   <section> 
        <Map lat={lat} lng={lng} ></Map> 
@@ -54,5 +80,6 @@ import ResultTracker from'./components/ResultTracker';
   </div> 
   );
 }
+
 
 export default App;

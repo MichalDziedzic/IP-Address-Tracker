@@ -1,15 +1,22 @@
 import React from 'react'
 
-const InputTracker=({ipAddress,setIpAdress})=> {
+const InputTracker=({ipAddress,setIpAdress,ChangeSearchFlag})=> {
     
-   const ChangeIpAddress=(e)=>
+   const changeIpAddress=(e)=>
    {
         setIpAdress(e.target.value)
    }
+   
     return (
         <div className="inputDiv">
-        <input type="text" className="addressIp_input" name="addressIp_input" id="addressIp_input" onChange={ChangeIpAddress} value={ipAddress} />
-        <button className="btn-dark">CHECK</button>
+        <input type="text" 
+            className="addressIp_input" 
+            name="addressIp_input" 
+            id="addressIp_input"
+            onChange={changeIpAddress} 
+            value={ipAddress}
+        />
+    <button className="btn-dark" onClick={ChangeSearchFlag}>CHECK</button>
     </div>
     )
 }
