@@ -15,6 +15,7 @@ const InputTracker=({ipAddress,setIpAdress,ChangeSearchFlag})=> {
             id="addressIp_input"
             onChange={changeIpAddress} 
             value={ipAddress}
+            placeholder="Search for any IP adress or domain"
         />
     <button className="btn-dark" onClick={ChangeSearchFlag}>CHECK</button>
     </div>

@@ -1,13 +1,15 @@
 import React from 'react';
 
- const ResultTracker=({ipAddress,isp,ipUserLocation})=> {
-     console.log(isp)
+ const ResultTracker=({ipAddressApi,isp,ipUserLocation})=> {
+     const {city,timezone,postalCode}=ipUserLocation
+    
+     
     return (
         <div className="ResultTracker">
-            <div className="ResultItem">{ipAddress}</div>
-            <div className="ResultItem">2</div>
-            <div className="ResultItem">xdsss</div>
-            <div className="ResultItem">{isp}</div>
+            <div className="ResultItem"><span>Ip address</span>{ipAddressApi}</div>
+            <div className="ResultItem"><span>location</span>{city},{postalCode}</div>
+            <div className="ResultItem"><span>timezone</span>{`UTC ${timezone}`}</div>
+            <div className="ResultItem"><span>isp</span>{isp}</div>
         </div>
     )
 }

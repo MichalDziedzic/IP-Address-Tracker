@@ -13,6 +13,7 @@ import ResultTracker from'./components/ResultTracker';
     const [lng,setLng]=useState('');
     const [SearchIpFlag,setSearchIpFlag]=useState(false);
      const [ipAddress,setIpAdress]=useState('');
+     const [ipAddressApi,setIpAddressApi]=useState('');
     
    
 
@@ -34,6 +35,7 @@ import ResultTracker from'./components/ResultTracker';
     const apiKey=`at_ZWirdu7GQBgYHHcfroKKUmHvLAbRN`;
    axios.get(`https://geo.ipify.org/api/v1?apiKey=${apiKey}&ipAddress=${ipAddress}`)
    .then((response)=>{
+      setIpAddressApi(response.data.ip);
      setLat(response.data.location.lat);
      setLng(response.data.location.lng);
       setIpUserLocation(response.data.location);
@@ -64,7 +66,7 @@ import ResultTracker from'./components/ResultTracker';
     ChangeSearchFlag={ChangeSearchFlag}
     />
     <ResultTracker
-      ipAddress={ipAddress}
+      ipAddressApi={ipAddressApi}
       isp={isp}
       ipUserLocation={ipUserLocation}
     />
