@@ -6,10 +6,10 @@ import React from 'react';
      
     return (
         <div className="ResultTracker">
-            <div className="ResultItem"><span>Ip address</span>{ipAddressApi}</div>
-            <div className="ResultItem"><span>location</span>{city},{postalCode}</div>
-            <div className="ResultItem"><span>timezone</span>{`UTC ${timezone}`}</div>
-            <div className="ResultItem"><span>isp</span>{isp}</div>
+            <div className="ResultItem"><span>Ip address</span><p>{ipAddressApi}</p></div>
+            <div className="ResultItem"><span>location</span><p>{city},{postalCode}</p></div>
+            <div className="ResultItem"><span>timezone</span><p>{`UTC ${timezone}`},</p></div>
+            <div className="ResultItem"><span>isp</span><p>{isp}</p></div>
         </div>
     )
 }
