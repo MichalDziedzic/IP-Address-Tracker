@@ -5,6 +5,7 @@ import HeaderTitle from'./components/Header';
 import InputTracker from'./components/InputTracker';
 import ResultTracker from'./components/ResultTracker';
  import Map from './components/Map';
+ 
 
  const App=()=> {
       const [ipUserLocation ,setIpUserLocation]=useState([]);
@@ -53,7 +54,7 @@ import ResultTracker from'./components/ResultTracker';
 
   
   const projectAdress = `https://www.frontendmentor.io?ref=challenge`;
-   const author= `Michał Dziedzic`;
+   const author= `https://github.com/MichalDziedzic`;
  
    return(
   <div>
@@ -75,8 +76,8 @@ import ResultTracker from'./components/ResultTracker';
        <Map lat={lat} lng={lng} ></Map> 
   </section> 
   <footer>
-    Challenge by <a href={projectAdress} >Frontend Mentor</a>. 
-    Coded by <a href={author}>{author}</a>.
+    <span>Challenge by <a href={projectAdress}> Frontend Mentor</a>.</span> 
+    <span>Coded by <a href={author}>Michał Dziedzic</a>.</span>
   </footer> 
     
   </div> 
