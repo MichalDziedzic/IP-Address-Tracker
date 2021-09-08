@@ -11,7 +11,7 @@ const App = () => {
      const [isp, setIsp] = useState("");
      const [lat, setLat] = useState("");
      const [lng, setLng] = useState("");
-     const [SearchIpFlag, setSearchIpFlag] = useState(false);
+     const [searchIpFlag, setSearchIpFlag] = useState(false);
      const [ipAddress, setIpAdress] = useState("");
      const [ipAddressApi, setIpAddressApi] = useState("");
 
@@ -46,10 +46,10 @@ const App = () => {
                .catch((err) => {
                     console.log(err);
                });
-     }, [SearchIpFlag]);
+     }, [searchIpFlag]);
 
-     const ChangeSearchFlag = () => {
-          setSearchIpFlag(!SearchIpFlag);
+     const changeSearchFlag = () => {
+          setSearchIpFlag(!searchIpFlag);
      };
 
      const projectAdress = `https://www.frontendmentor.io?ref=challenge`;
@@ -62,8 +62,8 @@ const App = () => {
                     <InputTracker
                          ipAddress={ipAddress}
                          setIpAdress={setIpAdress}
-                         SearchIpFlag={SearchIpFlag}
-                         ChangeSearchFlag={ChangeSearchFlag}
+                         searchIpFlag={searchIpFlag}
+                         changeSearchFlag={changeSearchFlag}
                     />
                     <ResultTracker
                          ipAddressApi={ipAddressApi}
